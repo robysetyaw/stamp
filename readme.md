@@ -19,3 +19,7 @@
 ## Run the project
 
 > go run main.go
+
+## Result
+
+![alt text](image.png)
