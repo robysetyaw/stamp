@@ -7,7 +7,7 @@ import (
 
 func Foobar(maxNummber int) []string {
 	result := []string{}
-	for i := 1; i <= maxNummber; i++ {
+	for i := maxNummber; i >= 1; i-- {
 		if isPrime(i) {
 			continue
 		} else {

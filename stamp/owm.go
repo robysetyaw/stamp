@@ -52,19 +52,19 @@ func FetchOpenWeatherMap() ([]string, error) {
 	}
 
 	var results []string
-	takenDates := map[string]bool{}
 	for _, item := range forecast.List {
 		t, err := time.Parse("2006-01-02 15:04:05", item.DtTxt)
+
 		if err != nil {
 			continue
 		}
-		dateKey := t.Format("2006-01-02")
-		if takenDates[dateKey] {
+
+		if t.Hour() != 12 {
 			continue
 		}
-		takenDates[dateKey] = true
+
 		date := t.Format("Mon, 02 Jan 2006")
-		info := fmt.Sprintf("%s : %.1f°C", date, item.Main.Temp)
+		info := fmt.Sprintf("%s: %.1f°C", date, item.Main.Temp)
 		results = append(results, info)
 	}
 
